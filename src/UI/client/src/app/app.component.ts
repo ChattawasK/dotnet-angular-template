@@ -1,28 +1,17 @@
 import { Component } from '@angular/core';
-import { Title } from '@angular/platform-browser';
-import { ChildActivationEnd, Router } from '@angular/router';
-import { filter } from 'rxjs';
-import { LeaveTypeService } from '../shared/services/leave-type.service';
-
+import { PrimeNGConfig } from 'primeng/api';
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+    selector: 'app-root',
+    templateUrl: './app.component.html'
 })
 export class AppComponent {
-  title = 'client';
-  data: any[] = [];
 
-  constructor(public router: Router, private titleService: Title) {
+    menuMode = 'static';
 
-    this.router.events
-        .pipe(filter(event => event instanceof ChildActivationEnd))
-        .subscribe(event => {
-            let snapshot = (event as ChildActivationEnd).snapshot;
-            while (snapshot.firstChild !== null) {
-                snapshot = snapshot.firstChild;
-            }
-            this.titleService.setTitle(snapshot.data['title'] || 'SB Admin Angular');
-        });
-  }
+    constructor(private primengConfig: PrimeNGConfig) { }
+
+    ngOnInit() {
+        this.primengConfig.ripple = true;
+        document.documentElement.style.fontSize = '14px';
+    }
 }
