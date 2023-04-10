@@ -19,7 +19,7 @@ namespace App.Identity
             services.Configure<JwtSettings>(configuration.GetSection("JwtSettings"));
 
             services.AddDbContext<AppIdentityDbContext>(options => 
-                options.UseNpgsql(configuration.GetConnectionString("AppIdentityConnectionString"))
+                options.UseSqlServer(configuration.GetConnectionString("AppIdentityConnectionString"))
             );
 
             services.AddIdentity<ApplicationUser, IdentityRole>()

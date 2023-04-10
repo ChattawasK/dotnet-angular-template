@@ -17,7 +17,7 @@ namespace App.Persistence
             var builder = new DbContextOptionsBuilder<AppDbContext>();
             var connectionString = configuration.GetConnectionString("defaultConnectionString");
 
-            builder.UseNpgsql(connectionString);
+            builder.UseSqlServer(connectionString);
 
             return new AppDbContext(builder.Options);
         }

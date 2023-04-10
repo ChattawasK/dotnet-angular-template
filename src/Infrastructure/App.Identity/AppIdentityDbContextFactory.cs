@@ -16,7 +16,7 @@ namespace App.Identity
             var builder = new DbContextOptionsBuilder<AppIdentityDbContext>();
             var connectionString = configuration.GetConnectionString("AppIdentityConnectionString");
 
-            builder.UseNpgsql(connectionString);
+            builder.UseSqlServer(connectionString);
 
             return new AppIdentityDbContext(builder.Options);
         }

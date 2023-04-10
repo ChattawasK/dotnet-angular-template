@@ -10,7 +10,7 @@ namespace App.Persistence
     {
         public static IServiceCollection ConfigurePersistenceServices(this IServiceCollection services, IConfiguration configuration){
             services.AddDbContext<AppDbContext>(option => {
-                option.UseNpgsql(
+                option.UseSqlServer(
                     configuration.GetConnectionString("defaultConnectionString"));
             });
 
